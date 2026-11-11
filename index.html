@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API Trainer</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<header class="top"><button class="logo" id="home">&lt;/&gt; API Trainer</button>
+  <nav id="main"><button class="pill" id="n-learn">Academy</button><button class="pill" id="n-play">Playground</button></nav><nav id="modes"></nav><div id="stats" class="stats"></div></header>
+
+<section id="intro" class="wrap">
+  <div class="hero">
+    <span class="chip">Learn APIs by sending real requests</span>
+    <h1>Stop reading about APIs.<br><span class="grad">Start breaking them.</span></h1>
+    <p>Sixteen missions (10 build, 6 debug), star-rated 1 to 5, against live public APIs. Each one drops you into a tiny story, and you win by sending the right HTTP request.</p>
+  </div>
+  <div class="cards" id="modecards"></div>
+  <p class="muted center">1&#9733; = warm-up &nbsp;&middot;&nbsp; 5&#9733; = boss fight &nbsp;&middot;&nbsp; progress saves in your browser</p>
+</section>
+
+<section id="primer" class="wrap hidden"></section>
+<section id="map" class="wrap hidden"></section>
+<section id="academy" class="wrap hidden"></section>
+<section id="sandbox" class="wrap hidden"></section>
+<div id="profile" class="overlay hidden"></div>
+<div id="app" class="wrap hidden">
+  <aside><button class="pill back" id="tomap">&larr; Journey map</button><div id="levels"></div><button class="link" id="tourbtn">Take the UI tour</button><br><button class="link" id="reset">Reset progress</button></aside>
+  <main>
+    <section class="card" id="brief"></section>
+    <section class="card" id="learn"></section>
+    <section class="card">
+      <div class="row">
+        <div class="f"><label data-tip="The verb: what you want to DO. GET reads, POST creates, PUT/PATCH update, DELETE removes.">Method <i>?</i></label>
+          <select id="method"><option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option></select></div>
+        <div class="f grow"><label data-tip="Where the request goes: host + path. Query params from the Params tab get added automatically.">URL <i>?</i></label><input id="url" spellcheck="false"></div>
+        <button id="send" class="btn" data-tip="Fires the real request from your browser to the server.">Send &#9654;</button>
+      </div>
+      <div class="rr"><button class="link" id="resetreq" data-tip="Put the request back to how this mission started. Your token wallet is kept.">&#8634; Reset request</button></div><div class="tabs" id="tabs"></div>
+      <div id="tabhelp" class="tip"></div>
+      <div class="panel" id="p-params"><div id="params"></div><button class="link" data-add="params">+ Add param</button></div>
+      <div class="panel" id="p-auth"><select id="authType"><option value="none">No Auth</option><option value="basic">Basic Auth</option><option value="bearer">Bearer Token</option><option value="apikey">API Key</option></select><div id="authFields"></div></div>
+      <div class="panel" id="p-headers"><div id="headers"></div><button class="link" data-add="headers">+ Add header</button></div>
+      <div class="panel" id="p-body"><select id="bodyType"><option value="none">none</option><option value="json">raw (JSON)</option><option value="form">x-www-form-urlencoded</option></select>
+        <textarea id="bodyText" rows="6" spellcheck="false" placeholder='{ "key": "value" }'></textarea>
+        <div id="form"></div><button class="link" data-add="form">+ Add field</button></div>
+      <details id="pv"><summary>What actually gets sent (raw HTTP)</summary><pre id="preview"></pre></details>
+    <details id="code"><summary>Turn this into real code</summary><div class="row between"><select id="lang"><option value="curl">curl</option><option value="python">Python (requests)</option><option value="js">JavaScript (fetch)</option></select><button class="link" id="copy">Copy</button></div><pre id="codeout"></pre></details>
+    </section>
+    <section class="card">
+      <div class="row between"><div class="tabs"><button class="tab on" data-r="body">Body</button><button class="tab" data-r="headers">Headers</button></div><span id="status"></span></div>
+      <div id="wire" class="wire"><span class="wn">You</span><div class="lane"><i id="pkt"></i></div><span class="wn">Server</span></div><div id="banner" class="banner hidden"></div><div id="wallet" class="wallet hidden"></div><pre id="out">Send a request to see the response.</pre><pre id="rhead" class="hidden"></pre>
+      <div id="verdict"></div><div id="recap" class="card recap hidden"></div><div id="hintbox"></div><button class="link" id="hint">Show hint</button>
+    </section>
+  </main>
+</div>
+<script src="levels.js"></script><script src="debug.js"></script><script src="extras.js"></script><script src="app.js"></script><script src="features.js"></script><script src="coach.js"></script><script src="ux.js"></script><script src="academy.js"></script><script src="sandbox.js"></script>
+</body></html>
